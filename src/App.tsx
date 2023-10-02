@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react'
 import './App.css'
+import RecyclerView from "./RecyclerView.tsx";
 
 function App() {
     const [items, setItems] = useState<string[]>([]);
@@ -14,11 +15,12 @@ function App() {
 
     return (
         <div className="App">
-            <ul>
-                {items.map((item, index) => (
-                    <li key={index}>{item}</li>
-                ))}
-            </ul>
+            <RecyclerView
+                itemCount={items.length}
+                items={items}
+                renderItem={(item) => (<div>{item}</div>)}
+                itemSize={100}
+            />
         </div>
     );
 }
